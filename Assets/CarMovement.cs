@@ -171,8 +171,8 @@ public class CarMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            boostLeft.transform.position = colliders.RearLeftWheel.transform.position;
-            boostRight.transform.position = colliders.RearRightWheel.transform.position;
+            boostLeft.transform.position = colliders.RearLeftWheel.transform.position;//TODO: set position of x axis to around minus 10
+            boostRight.transform.position = colliders.RearRightWheel.transform.position;//TODO: set position of x axis to around minus 10
             boostLeft.Play();
             boostRight.Play();
         }

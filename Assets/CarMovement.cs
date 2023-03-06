@@ -24,6 +24,7 @@ public class CarMovement : MonoBehaviour
     public ParticleSystem boostRight;
     public float posXBoostLeft;//Position of Boost
     public float posXBoostRight;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -171,15 +172,15 @@ public class CarMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            boostLeft.transform.position = colliders.RearLeftWheel.transform.position;//TODO: set position of x axis to around minus 10
-            boostRight.transform.position = colliders.RearRightWheel.transform.position;//TODO: set position of x axis to around minus 10
+            boostLeft.transform.position = colliders.RearLeftWheel.transform.position;//TODO: set position to a better position than wheelcollider
+            boostRight.transform.position = colliders.RearRightWheel.transform.position;//TODO: set position to a better position than wheelcollider
             boostLeft.Play();
             boostRight.Play();
         }
         else if(Input.GetKey(KeyCode.Space) != true)
         {
             boostLeft.transform.position = new Vector3(10000, 10000);//TODO: hide Particle System and not changing the position
-            boostRight.transform.position = new Vector3(10000, 10000);
+            boostRight.transform.position = new Vector3(10000, 10000);//TODO: hide Particle System and not changing the position
         }
     }
 }

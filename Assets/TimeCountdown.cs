@@ -22,7 +22,7 @@ public class TimeCountdown : MonoBehaviour
     }
     void ShowTime(float timeToShow)
     {
-        float minutes = Mathf.FloorToInt(timeToShow / 60) -1;//round the time - get it in seconds
+        float minutes = Mathf.FloorToInt(timeToShow / 60) -1;//round the time - get it in seconds - minus 1 because the Timer startet with 01:00
         float seconds = Mathf.FloorToInt(timeToShow % 60);//display seconds that are left
 
         timeText.text = string.Format("{0:00}:{1:00}", minutes, seconds);//right of the dots is the format

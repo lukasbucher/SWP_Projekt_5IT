@@ -5,8 +5,11 @@ using MySql.Data.MySqlClient;
 
 public class SqlConnection : MonoBehaviour
 {
-    string conString = "Server=web.hak-kitz.eu/dbv;Database=lukas.bucher_carsroyale;User ID=lukas.bucher;Password=password;";
-
+    //SqlConnection con;
+    //string conString = @"Server=web.hak-kitz.eu/dbv;Database=lukas.bucher_carsroyale;User ID=lukas.bucher;Password=password;";
+    //con = new SqlConnection(conString);
+    //MySqlCommand cmd = new MySqlCommand("select time from userData where username", con);
+    
     // Start is called before the first frame update
     void Start()
     {

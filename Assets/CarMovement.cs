@@ -7,7 +7,6 @@ public class CarMovement : MonoBehaviour
 {
     public WheelColliders colliders;
     public WheelMeshes meshes;
-    public WheelParticles wheelParticels;
     public float forward;
     public float turn;
     public float ps = 1000f;
@@ -21,6 +20,11 @@ public class CarMovement : MonoBehaviour
     public float maxSlipAngle = 3;
     public ParticleSystem driftSmokeLeft;
     public ParticleSystem driftSmokeRight;
+    public ParticleSystem boostLeft;
+    public ParticleSystem boostRight;
+    public float posXBoostLeft;//Position of Boost
+    public float posXBoostRight;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +43,7 @@ public class CarMovement : MonoBehaviour
         Break();
         Drift();
         DriftSmoke();
+        BoostAnimation();
 
         if (Input.GetKey("escape"))
         {
@@ -161,8 +166,21 @@ public class CarMovement : MonoBehaviour
         {
             driftSmokeLeft.transform.position = new Vector3(10000, 10000);//TODO: hide Particle System and not changing the position
             driftSmokeRight.transform.position = new Vector3(10000, 10000);
-            //driftSmokeLeft.Pause();
-            //driftSmokeRight.Pause();
+        }
+    }
+    void BoostAnimation()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            boostLeft.transform.position = colliders.RearLeftWheel.transform.position;//TODO: set position to a better position than wheelcollider
+            boostRight.transform.position = colliders.RearRightWheel.transform.position;//TODO: set position to a better position than wheelcollider
+            boostLeft.Play();
+            boostRight.Play();
+        }
+        else if(Input.GetKey(KeyCode.Space) != true)
+        {
+            boostLeft.transform.position = new Vector3(10000, 10000);//TODO: hide Particle System and not changing the position
+            boostRight.transform.position = new Vector3(10000, 10000);//TODO: hide Particle System and not changing the position
         }
     }
 }
@@ -182,12 +200,5 @@ public class WheelMeshes
     public MeshRenderer RearLeftWheel;
     public MeshRenderer RearRightWheel;
 }
-[System.Serializable]
-public class WheelParticles
-{
-    public ParticleSystem FrontLeftWheel;
-    public ParticleSystem FrontRightWheel;
-    public ParticleSystem RearLeftWheel;
-    public ParticleSystem RearRightWheel;
-}
+
 
